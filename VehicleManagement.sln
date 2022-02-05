@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VMEntities", "VMEntities\VMEntities.csproj", "{E7442466-60DB-442E-B1B7-5075793334D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VMEntities", "VMEntities\VMEntities.csproj", "{E7442466-60DB-442E-B1B7-5075793334D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VMDataAccess", "VMDataAccess\VMDataAccess.csproj", "{2F496204-411A-48C1-BF37-2CF961B74765}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VMDataAccess", "VMDataAccess\VMDataAccess.csproj", "{2F496204-411A-48C1-BF37-2CF961B74765}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VMBusiness", "VMBusiness\VMBusiness.csproj", "{E2C4DA72-5020-435C-82CE-F62C06F9895B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2F496204-411A-48C1-BF37-2CF961B74765}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F496204-411A-48C1-BF37-2CF961B74765}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F496204-411A-48C1-BF37-2CF961B74765}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2C4DA72-5020-435C-82CE-F62C06F9895B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2C4DA72-5020-435C-82CE-F62C06F9895B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2C4DA72-5020-435C-82CE-F62C06F9895B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2C4DA72-5020-435C-82CE-F62C06F9895B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

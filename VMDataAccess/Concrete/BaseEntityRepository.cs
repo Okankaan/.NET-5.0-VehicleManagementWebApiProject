@@ -10,7 +10,7 @@ using VMEntities;
 
 namespace VMDataAccess.Concrete
 {
-    public class BaseEntityRepository<TEntity, TContext> : IBaseEntityRespository<TEntity>
+    public class BaseEntityRepository<TEntity, TContext> : IBaseEntityRepository<TEntity>
        where TEntity : BaseEntity, new()
        where TContext : DbContext, new()
     {

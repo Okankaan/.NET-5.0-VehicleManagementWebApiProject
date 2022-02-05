@@ -8,7 +8,7 @@ using VMEntities;
 
 namespace VMDataAccess.Abstract
 {
-    public interface IBaseEntityRespository<T> where T : BaseEntity, new()
+    public interface IBaseEntityRepository<T> where T : BaseEntity, new()
     {
         Task<List<T>> GetAll(Expression<Func<T, bool>> filter = null);
         Task<T> Get(Expression<Func<T, bool>> filter = null);
