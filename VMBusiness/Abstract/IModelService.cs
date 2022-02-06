@@ -14,5 +14,6 @@ namespace VMBusiness.Abstract
         Task<IResult> Delete(Model brand);
         Task<IResult> Update(Model brand);
         Task<IResult> Add(Model brand);
+        Task<IDataResult<List<Model>>> GetByBrandId(int brandId);
     }
 }

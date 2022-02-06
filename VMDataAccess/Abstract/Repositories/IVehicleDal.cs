@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VMEntities.VMDBEntities;
+using VMEntities.VMDtos.ReturnResultEntities;
 
 namespace VMDataAccess.Abstract.Repositories
 {
-    public interface IBrandDal : IBaseEntityRepository<Brand>
+    public interface IVehicleDal : IBaseEntityRepository<Vehicle>
     {
-         Task<List<Brand>> GetAllModelsOfBrands();
     }
 }

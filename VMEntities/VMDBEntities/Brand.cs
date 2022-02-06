@@ -14,5 +14,6 @@ namespace VMEntities.VMDBEntities
         public string Name { get; set; }
 
         public ICollection<Model> Models { get; set; }
+        public ICollection<Vehicle> Vehicles { get; set; }
     }
 }

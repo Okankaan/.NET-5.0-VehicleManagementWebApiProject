@@ -13,5 +13,6 @@ namespace VMEntities.VMDBEntities
         [Required]
         public string Name { get; set; }
         public ICollection<AuthRole> AuthRoles { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
     }
 }

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VMDataAccess;
 
 namespace VMDataAccess.Migrations
 {
     [DbContext(typeof(VMDBContext))]
-    partial class VMDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220206013158_EntitiesChanged")]
+    partial class EntitiesChanged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

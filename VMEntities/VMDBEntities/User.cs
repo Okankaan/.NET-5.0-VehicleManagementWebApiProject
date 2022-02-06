@@ -21,7 +21,7 @@ namespace VMEntities.VMDBEntities
         [Required]
         public string EMail { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
-        public ICollection<UserVehicle> UserVehicles { get; set; }
+        public ICollection<Vehicle> Vehicles { get; set; }
 
     }
 }

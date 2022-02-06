@@ -23,7 +23,6 @@ namespace VMDataAccess
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
-        public DbSet<UserVehicle> UserVehicles { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
 
     }

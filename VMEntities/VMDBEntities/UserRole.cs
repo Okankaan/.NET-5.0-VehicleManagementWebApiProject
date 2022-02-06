@@ -16,6 +16,6 @@ namespace VMEntities.VMDBEntities
         [ForeignKey("RoleId")]
         public virtual Role Role { get; set; }
         public int RoleId { get; set; }
-        public ICollection<Role> Roles { get; set; }
+       
     }
 }

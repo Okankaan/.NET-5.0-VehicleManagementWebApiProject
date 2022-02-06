@@ -12,5 +12,7 @@ namespace VMEntities.VMDBEntities
         [StringLength(100)]
         [Required]
         public string Name { get; set; }
+
+        public ICollection<Vehicle> Vehicles { get; set; }
     }
 }

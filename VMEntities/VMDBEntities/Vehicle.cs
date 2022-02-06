@@ -11,12 +11,16 @@ namespace VMEntities.VMDBEntities
     {
         public decimal Price { get; set; }
 
-        [ForeignKey("ModelId")]
-        public virtual Model Model { get; set; }
-        public int ModelId { get; set; }
+        [ForeignKey("BrandId")]
+        public virtual Brand Brand { get; set; }
+        public int BrandId { get; set; }
 
         [ForeignKey("ColorId")]
         public virtual Color Color { get; set; }
         public int ColorId { get; set; }
+        
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
+        public int UserId { get; set; }
     }
 }
