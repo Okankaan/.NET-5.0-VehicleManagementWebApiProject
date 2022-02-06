@@ -23,7 +23,7 @@ namespace VMEntities.VMDtos.ReturnResultEntities
 
         }
 
-        public ErrorDataResult() : base(default, true)
+        public ErrorDataResult() : base(default, false)
         {
 
         }

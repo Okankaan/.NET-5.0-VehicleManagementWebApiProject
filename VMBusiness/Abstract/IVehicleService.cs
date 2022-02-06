@@ -12,8 +12,8 @@ namespace VMBusiness.Abstract
     public interface IVehicleService
     {
         Task<IDataResult<List<Vehicle>>> GetAll();
-        Task<IResult> Delete(Vehicle vehicle);
-        Task<IResult> Update(Vehicle vehicle);
+        Task<IResult> Delete(long vehicleId);
+        Task<IResult> Update(VehicleInsertUpdateDto vehicle);
         Task<IResult> Add(VehicleInsertUpdateDto vehicle);
         Task<IDataResult<List<VehicleDto>>> GetVehicleListByBrandModel(string brandName, string modelName);
     }

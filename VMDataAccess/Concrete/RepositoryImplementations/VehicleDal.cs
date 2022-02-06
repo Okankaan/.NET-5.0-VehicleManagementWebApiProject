@@ -24,6 +24,8 @@ namespace VMDataAccess.Concrete.RepositoryImplementations
                 if (!String.IsNullOrEmpty(modelName))
                     query = query.Where(t => t.Model.Name == modelName);
 
+                query = query.Where(t => t.Active == true);
+
                 return await query.ToListAsync();
             }
         }

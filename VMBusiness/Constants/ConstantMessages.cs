@@ -12,6 +12,9 @@ namespace VMBusiness.Constants
         public static string ModelListedByBrandIdMessage = "Model successfully listed by BrandId.";
         public static string RecordAlreadyExist = "The record already exists."; 
         public static string VehicleAdded = "Vehicle successfully added.";
+        public static string VehicleUpdated = "Vehicle successfully updated.";
+        public static string VehicleDeleted = "Vehicle successfully deleted.";
+        public static string VehicleIsNotExist = "Vehicle is not exist.";
 
     }
 }

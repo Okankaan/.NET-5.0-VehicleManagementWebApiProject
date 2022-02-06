@@ -39,14 +39,16 @@ namespace VMBusiness.Concrete
             return new SuccessResult(ConstantMessages.VehicleAdded);
         }
 
-        //private async Task<Result> CheckIfVehicleExist(Vehicle vehicle)
-        //{
-        //    return await _vehicleDal.CheckIfVehicleExist(vehicle);
-        //}
-
-        public Task<IResult> Delete(Vehicle vehicle)
+        public async Task<IResult> Delete(long vehicleId)
         {
-            throw new NotImplementedException();
+            var vehicle = await CheckIfVehicleExist(vehicleId);
+
+            if (vehicle.Success)
+            {
+                await _vehicleDal.Delete(vehicle.Data);
+                return new SuccessResult(ConstantMessages.VehicleDeleted);
+            }
+            return new ErrorDataResult<Vehicle>(ConstantMessages.VehicleIsNotExist);
         }
 
         public Task<IDataResult<List<Vehicle>>> GetAll()
@@ -54,9 +56,25 @@ namespace VMBusiness.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<IResult> Update(Vehicle vehicle)
+        public async Task<IResult> Update(VehicleInsertUpdateDto vehicle)
         {
-            throw new NotImplementedException();
+            if( (await CheckIfVehicleExist(vehicle.Id)).Success)
+            {
+                await _vehicleDal.Update(_mapper.Map<Vehicle>(vehicle));
+                return new SuccessResult(ConstantMessages.VehicleUpdated);
+            }
+            return new ErrorDataResult<Vehicle>(ConstantMessages.VehicleIsNotExist);
+
+        }
+
+        private async Task<IDataResult<Vehicle>> CheckIfVehicleExist(long vehicleId)
+        {
+            Vehicle vehicleItem = await _vehicleDal.Get(x => x.Id == vehicleId && x.Active == true);
+
+            if (vehicleItem != null)
+                return new SuccessDataResult<Vehicle>(vehicleItem);
+
+            return new ErrorDataResult<Vehicle>(); 
         }
 
         public async Task<IDataResult<List<VehicleDto>>> GetVehicleListByBrandModel(string brandName, string modelName)

@@ -29,6 +29,7 @@ namespace VMAPI.Controllers
 
             return BadRequest(result);
         }
+
         [HttpGet("getVehicleListByBrandModel")]
         public async Task<IActionResult> GetVehicleListByBrandModel(string brandName, string modelName)
         {
@@ -41,6 +42,32 @@ namespace VMAPI.Controllers
 
             return BadRequest(result);
         }
-        
+
+        [HttpPut("update")]
+        public async Task<IActionResult> Update(VehicleInsertUpdateDto vehicle)
+        {
+            var result = await _vehicleService.Update(vehicle);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpDelete("delete")]
+        public async Task<IActionResult> Delete(long vehicleId)
+        {
+            var result = await _vehicleService.Delete(vehicleId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
     }
 }
