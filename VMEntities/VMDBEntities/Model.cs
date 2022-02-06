@@ -14,6 +14,8 @@ namespace VMEntities.VMDBEntities
         [Required]
         public string Name { get; set; }
 
+        public ICollection<Vehicle> Vehicles { get; set; }
+
         [ForeignKey("BrandId")]
         public virtual Brand Brand { get; set; }
         public long BrandId { get; set; }

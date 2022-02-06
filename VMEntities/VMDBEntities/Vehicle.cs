@@ -11,9 +11,9 @@ namespace VMEntities.VMDBEntities
     {
         public decimal Price { get; set; }
 
-        [ForeignKey("BrandId")]
-        public virtual Brand Brand { get; set; }
-        public long BrandId { get; set; }
+        [ForeignKey("ModelId")]
+        public virtual Model Model { get; set; }
+        public long ModelId { get; set; }
 
         [ForeignKey("ColorId")]
         public virtual Color Color { get; set; }

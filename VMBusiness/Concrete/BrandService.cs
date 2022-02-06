@@ -44,9 +44,9 @@ namespace VMBusiness.Concrete
             throw new NotImplementedException();
         }
 
-        public async Task<IDataResult<List<Brand>>> GetAllModelsOfBrands()
+        public async Task<IDataResult<List<ModelBrandDto>>> GetAllModelsOfBrands()
         {
-            return new SuccessDataResult<List<Brand>>(await _brandDal.GetAllModelsOfBrands(), ConstantMessages.BrandListedMessage);
+            return new SuccessDataResult<List<ModelBrandDto>>(_mapper.Map<List<ModelBrandDto>>(await _brandDal.GetAllModelsOfBrands()), ConstantMessages.BrandListedMessage);
         }
 
     }

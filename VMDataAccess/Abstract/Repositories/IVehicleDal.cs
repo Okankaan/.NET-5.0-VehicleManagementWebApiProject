@@ -10,5 +10,6 @@ namespace VMDataAccess.Abstract.Repositories
 {
     public interface IVehicleDal : IBaseEntityRepository<Vehicle>
     {
+        Task<IList<Vehicle>> GetVehicleListByBrandModel(string brandName, string modelName);
     }
 }

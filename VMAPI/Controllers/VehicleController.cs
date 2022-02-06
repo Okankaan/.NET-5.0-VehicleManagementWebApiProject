@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using VMBusiness.Abstract;
 using VMEntities.VMDBEntities;
+using VMEntities.VMDtos;
 
 namespace VMAPI.Controllers
 {
@@ -17,7 +18,7 @@ namespace VMAPI.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<IActionResult> Add(Vehicle vehicle)
+        public async Task<IActionResult> Add(VehicleInsertUpdateDto vehicle)
         {
             var result = await _vehicleService.Add(vehicle);
 
@@ -28,5 +29,18 @@ namespace VMAPI.Controllers
 
             return BadRequest(result);
         }
+        [HttpGet("getVehicleListByBrandModel")]
+        public async Task<IActionResult> GetVehicleListByBrandModel(string brandName, string modelName)
+        {
+            var result = await _vehicleService.GetVehicleListByBrandModel(brandName, modelName);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+        
     }
 }
