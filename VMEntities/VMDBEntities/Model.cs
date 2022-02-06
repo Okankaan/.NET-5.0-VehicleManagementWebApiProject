@@ -16,6 +16,6 @@ namespace VMEntities.VMDBEntities
 
         [ForeignKey("BrandId")]
         public virtual Brand Brand { get; set; }
-        public int BrandId { get; set; }
+        public long BrandId { get; set; }
     }
 }

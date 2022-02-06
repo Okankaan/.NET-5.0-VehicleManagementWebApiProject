@@ -20,19 +20,19 @@ namespace VMDataAccess.Migrations
 
             modelBuilder.Entity("VMEntities.VMDBEntities.AuthRole", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .UseIdentityColumn();
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int>("AuthorityId")
-                        .HasColumnType("int");
+                    b.Property<long>("AuthorityId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -45,9 +45,9 @@ namespace VMDataAccess.Migrations
 
             modelBuilder.Entity("VMEntities.VMDBEntities.Authority", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .UseIdentityColumn();
 
                     b.Property<bool>("Active")
@@ -65,9 +65,9 @@ namespace VMDataAccess.Migrations
 
             modelBuilder.Entity("VMEntities.VMDBEntities.Brand", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .UseIdentityColumn();
 
                     b.Property<bool>("Active")
@@ -85,9 +85,9 @@ namespace VMDataAccess.Migrations
 
             modelBuilder.Entity("VMEntities.VMDBEntities.Color", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .UseIdentityColumn();
 
                     b.Property<bool>("Active")
@@ -105,16 +105,16 @@ namespace VMDataAccess.Migrations
 
             modelBuilder.Entity("VMEntities.VMDBEntities.Model", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .UseIdentityColumn();
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
+                    b.Property<long>("BrandId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -130,9 +130,9 @@ namespace VMDataAccess.Migrations
 
             modelBuilder.Entity("VMEntities.VMDBEntities.Role", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .UseIdentityColumn();
 
                     b.Property<bool>("Active")
@@ -150,9 +150,9 @@ namespace VMDataAccess.Migrations
 
             modelBuilder.Entity("VMEntities.VMDBEntities.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .UseIdentityColumn();
 
                     b.Property<bool>("Active")
@@ -180,19 +180,19 @@ namespace VMDataAccess.Migrations
 
             modelBuilder.Entity("VMEntities.VMDBEntities.UserRole", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .UseIdentityColumn();
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -205,25 +205,25 @@ namespace VMDataAccess.Migrations
 
             modelBuilder.Entity("VMEntities.VMDBEntities.Vehicle", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .UseIdentityColumn();
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
+                    b.Property<long>("BrandId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("ColorId")
-                        .HasColumnType("int");
+                    b.Property<long>("ColorId")
+                        .HasColumnType("bigint");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

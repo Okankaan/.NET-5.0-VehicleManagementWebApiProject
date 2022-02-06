@@ -11,11 +11,11 @@ namespace VMEntities.VMDBEntities
     {
         [ForeignKey("AuthorityId")]
         public virtual Authority Authority { get; set; }
-        public int AuthorityId { get; set; }
+        public long AuthorityId { get; set; }
 
         [ForeignKey("RoleId")]
         public virtual Role Role { get; set; }
-        public int RoleId { get; set; }
+        public long RoleId { get; set; }
         
     }
 }

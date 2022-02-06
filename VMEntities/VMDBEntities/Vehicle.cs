@@ -13,14 +13,14 @@ namespace VMEntities.VMDBEntities
 
         [ForeignKey("BrandId")]
         public virtual Brand Brand { get; set; }
-        public int BrandId { get; set; }
+        public long BrandId { get; set; }
 
         [ForeignKey("ColorId")]
         public virtual Color Color { get; set; }
-        public int ColorId { get; set; }
+        public long ColorId { get; set; }
         
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
-        public int UserId { get; set; }
+        public long UserId { get; set; }
     }
 }

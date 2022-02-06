@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VMBusiness.Abstract;
 using VMBusiness.Concrete;
+using VMBusiness.MapProfiles;
 using VMDataAccess.Abstract.Repositories;
 using VMDataAccess.Concrete.RepositoryImplementations;
 
@@ -44,6 +45,8 @@ namespace VMAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "VMAPI", Version = "v1" });
             });
+
+            services.AddAutoMapper(typeof(MapProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
