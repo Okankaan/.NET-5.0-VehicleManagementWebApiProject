@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VMAPI.Middlewares;
 using VMBusiness.Abstract;
 using VMBusiness.Concrete;
 using VMBusiness.MapProfiles;
@@ -131,6 +132,9 @@ namespace VMAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "VMAPI v1"));
             }
+
+            //ExceptionHandling configuration
+            app.UseMiddleware<GeneralExceptionHandlingMiddleware>();
 
             app.UseHttpsRedirection();
 

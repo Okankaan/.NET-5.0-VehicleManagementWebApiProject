@@ -22,6 +22,9 @@ namespace VMAPI.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDto userLoginDto)
         {
+            int a = 3;
+            int b = 0;
+            int c = a / b;
             var userToLogin = await _authService.Login(userLoginDto);
             if (!userToLogin.Success)
             {
