@@ -15,6 +15,6 @@ namespace VMBusiness.Constants
         public static string VehicleUpdated = "Vehicle successfully updated.";
         public static string VehicleDeleted = "Vehicle successfully deleted.";
         public static string VehicleIsNotExist = "Vehicle is not exist.";
-
+        public static string VehiclePriceWarning = "Price of Vehicle can not less than Zero (0).";
     }
 }

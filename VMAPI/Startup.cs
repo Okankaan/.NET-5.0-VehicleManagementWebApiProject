@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -46,7 +47,17 @@ namespace VMAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "VMAPI", Version = "v1" });
             });
 
+            //AutoMapper.Extensions.Microsoft.DependencyInjection Included to BusinessLayer and configured here
             services.AddAutoMapper(typeof(MapProfile));
+
+            //FluentValidation.AspNetCore Included to ApiLayer
+            services.AddControllers()
+                .AddJsonOptions(jsonOptions =>
+                {
+                    jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null;
+                    jsonOptions.JsonSerializerOptions.IgnoreNullValues = true;
+                })
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
