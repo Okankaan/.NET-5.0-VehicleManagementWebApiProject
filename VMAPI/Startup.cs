@@ -1,4 +1,5 @@
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,16 +8,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using VMBusiness.Abstract;
 using VMBusiness.Concrete;
 using VMBusiness.MapProfiles;
 using VMDataAccess.Abstract.Repositories;
 using VMDataAccess.Concrete.RepositoryImplementations;
+using VMEntities.JWT;
 
 namespace VMAPI
 {
@@ -41,10 +45,68 @@ namespace VMAPI
             services.AddSingleton<IVehicleService, VehicleService>();
             services.AddSingleton<IVehicleDal, VehicleDal>();
 
+            services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IUserDal, UserDal>();
+
+            services.AddSingleton<IAuthService, AuthService>();
+
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "VMAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "VMAPI",
+                    Version = "v1",
+                    Contact = new OpenApiContact()
+                    {
+                        Name = "Okan Kaan CETINKAYA",
+                        Email = "okankaan.cetinkaya@gmail.com"
+                    }
+                });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please insert JWT with Bearer into field",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                   {
+                     new OpenApiSecurityScheme
+                     {
+                       Reference = new OpenApiReference
+                       {
+                         Type = ReferenceType.SecurityScheme,
+                         Id = "Bearer"
+                       }
+                      },
+                      new string[] { }
+                    }
+                  });
+            });
+
+            //JWT Token Autherization Settings
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+            services.AddAuthentication(auth =>
+            {
+                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = tokenOptions.Issuer,
+                    ValidateAudience = true,
+                    ValidAudience = tokenOptions.Audience,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.SecurityKey))
+                };
             });
 
             //AutoMapper.Extensions.Microsoft.DependencyInjection Included to BusinessLayer and configured here
@@ -74,6 +136,8 @@ namespace VMAPI
 
             app.UseRouting();
 
+            //JWT Token Auth
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

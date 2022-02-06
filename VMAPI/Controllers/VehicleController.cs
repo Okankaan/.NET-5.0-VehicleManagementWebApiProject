@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using VMBusiness.Abstract;
@@ -18,6 +19,7 @@ namespace VMAPI.Controllers
         }
 
         [HttpPost("add")]
+        [Authorize(Roles = "VehicleAdministrator")]
         public async Task<IActionResult> Add(VehicleInsertUpdateDto vehicle)
         {
             var result = await _vehicleService.Add(vehicle);
@@ -44,6 +46,7 @@ namespace VMAPI.Controllers
         }
 
         [HttpPut("update")]
+        [Authorize(Roles = "VehicleAdministrator")]
         public async Task<IActionResult> Update(VehicleInsertUpdateDto vehicle)
         {
             var result = await _vehicleService.Update(vehicle);
@@ -57,6 +60,7 @@ namespace VMAPI.Controllers
         }
 
         [HttpDelete("delete")]
+        [Authorize(Roles = "VehicleAdministrator")]
         public async Task<IActionResult> Delete(long vehicleId)
         {
             var result = await _vehicleService.Delete(vehicleId);
