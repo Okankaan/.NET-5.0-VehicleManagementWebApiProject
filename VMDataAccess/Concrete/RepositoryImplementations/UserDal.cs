@@ -17,7 +17,7 @@ namespace VMDataAccess.Concrete.RepositoryImplementations
             using (VMDBContext context = new VMDBContext())
             {
                 return await context.Users.
-                    Include(a => a.UserRoles).ThenInclude(b => b.Role).Where(d => d.EMail == userLoginDto.Email && d.Password == userLoginDto.Password).FirstOrDefaultAsync();
+                    Include(a => a.UserRoles).ThenInclude(b => b.Role).Where(d => d.EMail == userLoginDto.EMail && d.Password == userLoginDto.Password).FirstOrDefaultAsync();
             }
         }
     }

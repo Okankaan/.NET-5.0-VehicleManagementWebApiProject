@@ -26,7 +26,6 @@ namespace VMAPI.Controllers
             {
                 return Ok(result);
             }
-
             return BadRequest(result);
         }
 
@@ -39,9 +38,8 @@ namespace VMAPI.Controllers
             {
                 return Ok(result);
             }
-
             return BadRequest(result);
         }
-        
+
     }
 }

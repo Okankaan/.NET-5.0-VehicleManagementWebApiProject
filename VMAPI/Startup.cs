@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -37,8 +38,14 @@ namespace VMAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+            services.AddMemoryCache();
+
             services.AddSingleton<IBrandService, BrandService>();
             services.AddSingleton<IBrandDal, BrandDal>();
+
+            services.AddSingleton<IJwtAuthManager, JwtAuthManager>();
+            services.AddSingleton<IMemoryCache, MemoryCache>();
 
             services.AddSingleton<IModelService, ModelService>();
             services.AddSingleton<IModelDal, ModelDal>();
@@ -87,26 +94,31 @@ namespace VMAPI
                       new string[] { }
                     }
                   });
+
+                
             });
 
             //JWT Token Autherization Settings
-            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-            services.AddAuthentication(auth =>
+            var jwtTokenConfig = Configuration.GetSection("jwtTokenConfig").Get<JwtTokenConfig>();
+            services.AddSingleton(jwtTokenConfig);
+            services.AddAuthentication(x =>
             {
-                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
             {
-                options.SaveToken = true;
-                options.TokenValidationParameters = new TokenValidationParameters
+                x.RequireHttpsMetadata = true;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
-                    ValidIssuer = tokenOptions.Issuer,
-                    ValidateAudience = true,
-                    ValidAudience = tokenOptions.Audience,
+                    ValidIssuer = jwtTokenConfig.Issuer,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.SecurityKey))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtTokenConfig.Secret)),
+                    ValidAudience = jwtTokenConfig.Audience,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.FromMinutes(1)
                 };
             });
 

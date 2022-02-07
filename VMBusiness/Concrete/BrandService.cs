@@ -24,7 +24,7 @@ namespace VMBusiness.Concrete
             _mapper = mapper;
         }
 
-        public async Task<IResult> Add(Brand brand)
+        public Task<IResult> Add(Brand brand)
         {
             throw new NotImplementedException();
         }

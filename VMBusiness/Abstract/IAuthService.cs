@@ -13,6 +13,5 @@ namespace VMBusiness.Abstract
     public interface IAuthService
     {
         Task<IDataResult<User>> Login(UserLoginDto userLoginDto);
-        Task<AccessToken> CreateAccessToken(User user);
     }
 }

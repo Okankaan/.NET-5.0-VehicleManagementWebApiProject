@@ -16,19 +16,6 @@ namespace VMAPI.Controllers
             _modelService = modelService;
         }
 
-        //[HttpGet("all")]
-        //public async Task<IActionResult> GetAll()
-        //{
-        //    var result = await _modelService.GetAll();
-
-        //    if (result.Success)
-        //    {
-        //        return Ok(result);
-        //    }
-
-        //    return BadRequest(result);
-        //}
-
         [HttpGet("getByBrandId")]
         public async Task<IActionResult> GetByBrandId(int brandId)
         {
@@ -38,9 +25,8 @@ namespace VMAPI.Controllers
             {
                 return Ok(result);
             }
-
             return BadRequest(result);
         }
-        
+
     }
 }

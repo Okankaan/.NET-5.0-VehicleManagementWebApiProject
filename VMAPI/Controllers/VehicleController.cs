@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using System.Threading.Tasks;
+using VMAPI.Attributes;
 using VMBusiness.Abstract;
 using VMEntities.VMDBEntities;
 using VMEntities.VMDtos;
@@ -19,7 +21,7 @@ namespace VMAPI.Controllers
         }
 
         [HttpPost("add")]
-        [Authorize(Roles = "VehicleAdministrator")]
+        [CustomAuthorizeAttribute(Roles = "VehicleAdministrator")]
         public async Task<IActionResult> Add(VehicleInsertUpdateDto vehicle)
         {
             var result = await _vehicleService.Add(vehicle);
@@ -28,9 +30,9 @@ namespace VMAPI.Controllers
             {
                 return Ok(result);
             }
-
             return BadRequest(result);
         }
+
 
         [HttpGet("getVehicleListByBrandModel")]
         public async Task<IActionResult> GetVehicleListByBrandModel(string brandName, string modelName)
@@ -41,12 +43,11 @@ namespace VMAPI.Controllers
             {
                 return Ok(result);
             }
-
             return BadRequest(result);
         }
 
         [HttpPut("update")]
-        [Authorize(Roles = "VehicleAdministrator")]
+        [CustomAuthorizeAttribute(Roles = "VehicleAdministrator")]
         public async Task<IActionResult> Update(VehicleInsertUpdateDto vehicle)
         {
             var result = await _vehicleService.Update(vehicle);
@@ -55,12 +56,11 @@ namespace VMAPI.Controllers
             {
                 return Ok(result);
             }
-
             return BadRequest(result);
         }
 
         [HttpDelete("delete")]
-        [Authorize(Roles = "VehicleAdministrator")]
+        [CustomAuthorizeAttribute(Roles = "VehicleAdministrator")]
         public async Task<IActionResult> Delete(long vehicleId)
         {
             var result = await _vehicleService.Delete(vehicleId);
@@ -69,7 +69,6 @@ namespace VMAPI.Controllers
             {
                 return Ok(result);
             }
-
             return BadRequest(result);
         }
 
