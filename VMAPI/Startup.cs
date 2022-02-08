@@ -58,6 +58,8 @@ namespace VMAPI
 
             services.AddSingleton<IAuthService, AuthService>();
 
+            services.AddSingleton<IUserRoleDal, UserRoleDal>();
+
             services.AddControllers();
 
             services.AddSwaggerGen(c =>

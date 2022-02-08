@@ -12,5 +12,6 @@ namespace VMBusiness.Abstract
     public interface IUserService
     {
         Task<User> GetUserByEmailAndPassword(UserLoginDto userLoginDto);
+        Task<IResult> Add(UserRegistrationDto user);
     }
 }

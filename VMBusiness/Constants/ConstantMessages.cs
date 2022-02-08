@@ -19,5 +19,6 @@ namespace VMBusiness.Constants
         public static string TokenIsNotValid = "Token is not Valid. Please Login.";
         public static string UserNotFound = "User not found. Please Login.";
         public static string LoginSuccessful = "You have successfully Logged in.";
+        public static string UserAdded = "User successfully added.";
     }
 }

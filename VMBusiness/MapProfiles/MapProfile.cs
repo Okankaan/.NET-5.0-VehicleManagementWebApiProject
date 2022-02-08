@@ -16,6 +16,7 @@ namespace VMBusiness.MapProfiles
             CreateMap<VehicleInsertUpdateDto, Vehicle>();
             CreateMap<Color, ColorDto>();
             CreateMap<User, UserDto>();
+            CreateMap<UserRegistrationDto, User>();
             CreateMap<Brand, BrandDto>();
             CreateMap<Model, ModelDto>();
             CreateMap<Brand, ModelBrandDto>().ForMember(x => x.BrandName, opt => opt.MapFrom(src => src.Name))
