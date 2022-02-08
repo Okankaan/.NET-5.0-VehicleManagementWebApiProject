@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using VMAPI.Attributes;
 using VMBusiness.Abstract;
 
 namespace VMAPI.Controllers
@@ -18,6 +19,7 @@ namespace VMAPI.Controllers
         }
 
         [HttpGet("all")]
+        [CustomAuthorizeAttribute(Roles = "SystemAdministrator,BrandAdministrator,User")]
         public async Task<IActionResult> GetAll()
         {
             var result = await _brandService.GetAll();
@@ -30,6 +32,7 @@ namespace VMAPI.Controllers
         }
 
         [HttpGet("allModelsOfBrands")]
+        [CustomAuthorizeAttribute(Roles = "SystemAdministrator,BrandAdministrator")]
         public async Task<IActionResult> GetAllModelsOfBrands()
         {
             var result = await _brandService.GetAllModelsOfBrands();

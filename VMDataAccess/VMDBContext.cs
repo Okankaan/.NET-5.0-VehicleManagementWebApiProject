@@ -41,10 +41,10 @@ namespace VMDataAccess
             );
 
             modelBuilder.Entity<Role>().HasData(
-              new Role { Id = 1, Name = "System Administrator", Active = true },
-              new Role { Id = 2, Name = "Vehicle Administrator", Active = true },
-              new Role { Id = 3, Name = "Brand Administrator", Active = true },
-              new Role { Id = 4, Name = "Model Administrator", Active = true },
+              new Role { Id = 1, Name = "SystemAdministrator", Active = true },
+              new Role { Id = 2, Name = "VehicleAdministrator", Active = true },
+              new Role { Id = 3, Name = "BrandAdministrator", Active = true },
+              new Role { Id = 4, Name = "ModelAdministrator", Active = true },
               new Role { Id = 5, Name = "User", Active = true }
           );
 

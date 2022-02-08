@@ -15,7 +15,7 @@ namespace VMBusiness.Abstract
     {
         IImmutableDictionary<string, RefreshToken> UsersRefreshTokensReadOnlyDictionary { get; }
         JwtAuthResult GenerateTokens(string username, Claim[] claims, DateTime now);
-        JwtAuthResult Refresh(string refreshToken, string accessToken, DateTime now);
+        //JwtAuthResult Refresh(string refreshToken, string accessToken, DateTime now);
         (ClaimsPrincipal, JwtSecurityToken) DecodeJwtToken(string token);
     }
 }

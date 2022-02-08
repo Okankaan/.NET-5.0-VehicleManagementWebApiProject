@@ -230,10 +230,10 @@ namespace VMDataAccess.Migrations
                 columns: new[] { "Id", "Active", "Name" },
                 values: new object[,]
                 {
-                    { 1L, true, "System Administrator" },
-                    { 2L, true, "Vehicle Administrator" },
-                    { 3L, true, "Brand Administrator" },
-                    { 4L, true, "Model Administrator" },
+                    { 1L, true, "SystemAdministrator" },
+                    { 2L, true, "VehicleAdministrator" },
+                    { 3L, true, "BrandAdministrator" },
+                    { 4L, true, "ModelAdministrator" },
                     { 5L, true, "User" }
                 });
 

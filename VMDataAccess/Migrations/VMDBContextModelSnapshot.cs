@@ -398,25 +398,25 @@ namespace VMDataAccess.Migrations
                         {
                             Id = 1L,
                             Active = true,
-                            Name = "System Administrator"
+                            Name = "SystemAdministrator"
                         },
                         new
                         {
                             Id = 2L,
                             Active = true,
-                            Name = "Vehicle Administrator"
+                            Name = "VehicleAdministrator"
                         },
                         new
                         {
                             Id = 3L,
                             Active = true,
-                            Name = "Brand Administrator"
+                            Name = "BrandAdministrator"
                         },
                         new
                         {
                             Id = 4L,
                             Active = true,
-                            Name = "Model Administrator"
+                            Name = "ModelAdministrator"
                         },
                         new
                         {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using VMAPI.Attributes;
 using VMBusiness.Abstract;
 
 namespace VMAPI.Controllers
@@ -17,6 +18,7 @@ namespace VMAPI.Controllers
         }
 
         [HttpGet("getByBrandId")]
+        [CustomAuthorizeAttribute(Roles = "SystemAdministrator,ModelAdministrator")]
         public async Task<IActionResult> GetByBrandId(int brandId)
         {
             var result = await _modelService.GetByBrandId(brandId);

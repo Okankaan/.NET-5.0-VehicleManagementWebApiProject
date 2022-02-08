@@ -21,7 +21,7 @@ namespace VMAPI.Controllers
         }
 
         [HttpPost("add")]
-        [CustomAuthorizeAttribute(Roles = "VehicleAdministrator")]
+        [CustomAuthorizeAttribute(Roles = "SystemAdministrator,VehicleAdministrator")]
         public async Task<IActionResult> Add(VehicleInsertUpdateDto vehicle)
         {
             var result = await _vehicleService.Add(vehicle);
@@ -35,6 +35,7 @@ namespace VMAPI.Controllers
 
 
         [HttpGet("getVehicleListByBrandModel")]
+        [CustomAuthorizeAttribute(Roles = "SystemAdministrator,VehicleAdministrator")]
         public async Task<IActionResult> GetVehicleListByBrandModel(string brandName, string modelName)
         {
             var result = await _vehicleService.GetVehicleListByBrandModel(brandName, modelName);
@@ -47,7 +48,7 @@ namespace VMAPI.Controllers
         }
 
         [HttpPut("update")]
-        [CustomAuthorizeAttribute(Roles = "VehicleAdministrator")]
+        [CustomAuthorizeAttribute(Roles = "SystemAdministrator,VehicleAdministrator")]
         public async Task<IActionResult> Update(VehicleInsertUpdateDto vehicle)
         {
             var result = await _vehicleService.Update(vehicle);
@@ -60,7 +61,7 @@ namespace VMAPI.Controllers
         }
 
         [HttpDelete("delete")]
-        [CustomAuthorizeAttribute(Roles = "VehicleAdministrator")]
+        [CustomAuthorizeAttribute(Roles = "SystemAdministrator,VehicleAdministrator")]
         public async Task<IActionResult> Delete(long vehicleId)
         {
             var result = await _vehicleService.Delete(vehicleId);

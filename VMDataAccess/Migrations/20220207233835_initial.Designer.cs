@@ -9,7 +9,7 @@ using VMDataAccess;
 namespace VMDataAccess.Migrations
 {
     [DbContext(typeof(VMDBContext))]
-    [Migration("20220207230706_initial")]
+    [Migration("20220207233835_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -400,25 +400,25 @@ namespace VMDataAccess.Migrations
                         {
                             Id = 1L,
                             Active = true,
-                            Name = "System Administrator"
+                            Name = "SystemAdministrator"
                         },
                         new
                         {
                             Id = 2L,
                             Active = true,
-                            Name = "Vehicle Administrator"
+                            Name = "VehicleAdministrator"
                         },
                         new
                         {
                             Id = 3L,
                             Active = true,
-                            Name = "Brand Administrator"
+                            Name = "BrandAdministrator"
                         },
                         new
                         {
                             Id = 4L,
                             Active = true,
-                            Name = "Model Administrator"
+                            Name = "ModelAdministrator"
                         },
                         new
                         {

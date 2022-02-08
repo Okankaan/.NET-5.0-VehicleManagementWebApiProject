@@ -54,26 +54,26 @@ namespace VMBusiness.Concrete
             };
         }
 
-        public JwtAuthResult Refresh(string refreshToken, string accessToken, DateTime now)
-        {
-            var (principal, jwtToken) = DecodeJwtToken(accessToken);
-            if (jwtToken == null || !jwtToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256Signature))
-            {
-                throw new SecurityTokenException("Invalid token");
-            }
+        //public JwtAuthResult Refresh(string refreshToken, string accessToken, DateTime now)
+        //{
+        //    var (principal, jwtToken) = DecodeJwtToken(accessToken);
+        //    if (jwtToken == null || !jwtToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256Signature))
+        //    {
+        //        throw new SecurityTokenException("Invalid token");
+        //    }
 
-            var userName = principal.Identity?.Name;
-            if (!_usersRefreshTokens.TryGetValue(refreshToken, out var existingRefreshToken))
-            {
-                throw new SecurityTokenException("Invalid token");
-            }
-            if (existingRefreshToken.UserName != userName || existingRefreshToken.ExpireAt < now)
-            {
-                throw new SecurityTokenException("Invalid token");
-            }
+        //    var userName = principal.Identity?.Name;
+        //    if (!_usersRefreshTokens.TryGetValue(refreshToken, out var existingRefreshToken))
+        //    {
+        //        throw new SecurityTokenException("Invalid token");
+        //    }
+        //    if (existingRefreshToken.UserName != userName || existingRefreshToken.ExpireAt < now)
+        //    {
+        //        throw new SecurityTokenException("Invalid token");
+        //    }
 
-            return GenerateTokens(userName, principal.Claims.ToArray(), now); 
-        }
+        //    return GenerateTokens(userName, principal.Claims.ToArray(), now); 
+        //}
 
         public (ClaimsPrincipal, JwtSecurityToken) DecodeJwtToken(string token)
         {
